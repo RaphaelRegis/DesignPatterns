@@ -1,0 +1,8 @@
+PROBLEMA
+Muitas vezes, temos uma série de algorítmos que são idênticos em sua estrutura, mas diferem em algumas partes. Quando temos essa situação, é comum que tenhamos que repetir os mesmos trechos de código várias vezes para cada cenário, mudando apenas uma parte ou outra.
+
+SOLUÇÃO
+Para resolver isso, podemos definir o esqueleto do algorítmo num método dentro de uma classe abstrata - esse será nosso Template Method. Contudo, as partes que diferem são apresentadas no formato de métodos abstratos - e então deixamos para as diferentes subclasses fazerem as implementações. 
+
+IMPLEMENTAÇÃO
+Primeiro criamos uma classe abstrata. Essa classe possui o nosso método template com o esqueleto do algorítmo. Dentro desse esqueleto, são chamados os métodos abstratos. Delegamos então a implementação desses métodos para as subclasses dessa classe abstrata.
