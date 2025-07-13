@@ -1,0 +1,12 @@
+PROBLEMA
+Muitas vezes ao desenvolver códigos, precisamos construir objetos que são excessivamente complexos, e queremos evitar usar construtores bagunçados, por exemplo.
+
+SOLUÇÃO
+Para resolver isso, podemos usar o padrão Builder: um padrão de projeto que permite criar diferentes variantes de um mesmo objeto sem precisar se preocupar com os parâmetros do construtor. É bem útil quando um objeto precisa de vários passos para ser criado.
+
+IMPLEMENTAÇÃO
+A ideia é ter um método que inicia o objeto e seta um atributo; então você faz uma cadeia para cada atributo e por fim um método .build(). Esse método retorna o objeto com todos os atributos configurados.
+
+Para tal, o método que inicia o objeto pode estar dentro da classe (como um método estático por exemplo), mas você também pode colocar que o construtor do objeto recebe um Builder próprio e esse builder inicializa os parâmetros.
+
+No primeiro caso, podemos resolver com o Lombok, logo, a implementação desse código utilizará a outra forma.
