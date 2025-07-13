@@ -1,0 +1,14 @@
+PROBLEMA
+Muitas vezes desenvolvemos sistemas onde precisamos criar vários objetos que são semelhantes - logo, utilizamos várias condicionais em nosso código principal para ir criando de acordo com a situação. Com o tempo, o código fica sujo e de difícil manutenção.
+
+SOLUÇÃO
+Podemos criar formas para fazer com que os objetos sejam criados de acordo com a situação correta em tempo de execução. Com o Factory Method, podemos fazer isso da seguinte forma:
+
+- Utilizamos um Criador (creator) que funciona como um gerente que define quem vai ser criado. Aparece na forma de uma classe com um método abstrato (nosso Factory Method) capaz de retornar objetos de uma determinada interface (nosso produto);
+- O Criador por sua vez possui as "Fábricas" ou Criadores Concretos (concrete creators): extensões da classe criadora que implementam o Factory Method para devolver um produto concreto;
+- O Produto é a interface ou classe-pai dos objetos que os criadores concretos podem criar. Os objetos por sua vez são os chamados Produtos Concretos.
+
+IMPLEMENTAÇÃO
+Primeiro você cria a interface que serve como produto e as classes que a implementam (produtos concretos).
+
+Em seguida, você faz a classe abstrata do criador e dentro dela o factory method. Após isso, você cria os criadores concretos para implementarem o factory method de acordo com cada produto concreto.
