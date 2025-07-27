@@ -1,0 +1,16 @@
+PROBLEMA
+É ideal que certos objetos trabalhem com apenas uma única instância, como objetos de acesso à bancos de dados. Seria de alguma forma possível garantir isso?
+
+SOLUÇÃO
+Podemos criar uma lógica para garantir que apenas uma única instância de um objeto seja utilizada. Ela é criada uma vez e então reutilizada por todos.
+
+IMPLEMENTAÇÃO
+A implementação do Singleton pode ser feita de maneira incremental para evitar problemas:
+
+1. Começamos com a nossa classe. Essa classe possui um objeto estático de si mesma como um dos atributos. Ela deve ter também um construtor privado e um método que por convenção, será chamado de getInstance. Esse método verifica se a instância é nula. Caso seja, ele chama o construtor e devolve a instância. Caso contrário, ele retorna a instância que existe. 
+
+2. Só isso deve funcionar em cenários de single thread, mas em multi thread, duas ou mais threads podem acabar instanciando o objeto ao mesmo tempo. Para evitar esse problema, podemos colocar envolver a condicional dentro de uma cláusula synchronized. Ela faz com que só uma thread acesse aquele trecho de código por vez: as outras tem de esperar.
+
+3. Cada thread tem que ficar esperando para poder acessar a instância. Isso pode tornar o sistema lento. Podemos então envolver o synchronized numa condicional: você só entra nele caso a instância seja nula. Uma outra otimização legal é por o singleton em uma outra variável para acelerar os acessos à memória.
+
+4. Em algumas linguagens, dá pra acessar o objeto caso ele esteja instanciado apenas parcialmente. Vamos supor o seguinte: uma thread A começa a instanciar o singleton; outra thread B tenta acessar o singleton, mas ele não está pronto ainda - apenas parcialmente. Ele ainda vai conseguir acessar esse singleton, uma vez que por estar parcialmente pronto, ele já não é mais nulo. Para resolver esse problema, o singleton recebe a palavra chave volatile. Agora ele só pode ser acessado se estiver 100% pronto.
