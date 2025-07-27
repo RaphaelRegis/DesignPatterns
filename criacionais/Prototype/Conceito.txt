@@ -1,0 +1,14 @@
+PROBLEMA
+Muitas vezes precisamos criar cópias de instâncias dos objetos, mas o processo para fazer isso pode ser trabalhoso, lento e até mesmo inviável.
+
+SOLUÇÃO
+Utilizar métodos específicos dentro das classes para poder fazer cópias das instâncias.
+
+IMPLEMENTAÇÃO
+Poderíamos fazer isso diretamente criando na classe um método para fazer a cópia do objeto. Mas também podemos fazer de uma forma mais robusta, usando classes abstratas e implementações concretas. A ideia abaixo usa a interface Cloneable do Java:
+
+1. Primeiro você cria uma classe abstrata que implementa a interface Cloneable. Ela possui um método para ser sobrescrito: clone. Esse método será usado para clonar a instância.
+
+2. Você cria as implementações concretas da classe abstrata.
+
+3. Você cria uma classe cuja responsabilidade é chamar o método de cópia. Funciona assim: ela mantém as instâncias existentes e você procura elas com base num "id". A partir desse id, ela pega a instância correta e retorna uma cópia.
