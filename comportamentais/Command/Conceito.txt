@@ -1,0 +1,19 @@
+PROBLEMA
+Em muitos sistemas, é comum que um objeto precise solicitar uma ação a outro, mas sem saber exatamente quem executará a ação ou como ela será feita. Isso cria um forte acoplamento entre o solicitante (por exemplo, um botão ou menu) e o executor da tarefa (por exemplo, uma lâmpada, um arquivo ou um banco de dados).
+Esse acoplamento dificulta a manutenção e a extensão do código, além de tornar complexa a implementação de funcionalidades como desfazer (undo), fila de comandos e execuções programadas.
+
+SOLUÇÃO
+O padrão Command propõe encapsular cada solicitação como um objeto de comando, contendo todas as informações necessárias para executá-la: quem deve executar e qual ação realizar.
+Dessa forma, o objeto que emite o comando não precisa conhecer os detalhes da execução — ele apenas chama o método execute() do comando.
+Esse encapsulamento permite armazenar, desfazer ou reagendar comandos com facilidade, promovendo baixo acoplamento e alta flexibilidade.
+
+IMPLEMENTAÇÃO
+A estrutura básica do padrão envolve cinco elementos principais:
+
+1. Command (interface) – Define a operação a ser executada (geralmente execute()).
+2. ConcreteCommand (comando concreto) – Implementa o comando, chamando o método apropriado no objeto receptor.
+3. Receiver (receptor) – É o objeto que realmente executa a ação.
+4. Invoker (chamador) – Dispara a execução do comando, sem conhecer seus detalhes internos.
+5. Client (cliente) – Cria os comandos e os associa ao invocador.
+
+Por exemplo, em um controle remoto, cada botão pode ser associado a um comando (LigarLampadaCommand, DesligarLampadaCommand), e o controle (Invoker) apenas executa o comando ao ser pressionado, sem saber como a lâmpada realmente funciona.
