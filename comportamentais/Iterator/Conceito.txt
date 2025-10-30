@@ -1,0 +1,21 @@
+PROBLEMA
+Imagine que você tem uma coleção de objetos (por exemplo, uma lista de produtos).
+Cada tipo de coleção pode ter uma forma diferente de armazenar e acessar os dados — alguns usam listas, outros árvores, mapas, etc.
+Se o código que percorre esses elementos for diretamente ligado à forma de armazenamento, o programa se torna difícil de manter e modificar.
+
+SOLUÇÃO
+O Iterator resolve o problema descrito separando a lógica de iteração da estrutura da coleção. Assim, o cliente (quem usa a coleção) não precisa saber como os elementos estão guardados. O padrão define um objeto especial (o iterador) que:
+- sabe como percorrer os elementos de uma coleção;
+- fornece métodos simples como:
+- hasNext() → verifica se há mais elementos;
+- next() → retorna o próximo elemento.
+
+Assim, qualquer coleção pode ser percorrida da mesma forma, sem precisar conhecer a sua implementação interna.
+
+IMPLEMENTAÇÃO
+Muitas linguagens possuem o iterator implementado de alguma forma, como o Java com a interface Iterator. Os principais elementos do padrão são:
+
+- Iterator (interface): define os métodos necessários para percorrer a coleção, como next() e hasNext().
+- ConcreteIterator (iterador concreto): implementa a interface Iterator e mantém o estado da iteração (por exemplo, o índice atual).
+- Aggregate (coleção): define um método para criar um iterador.
+- ConcreteAggregate (coleção concreta): implementa o método que retorna um iterador específico para ela.
