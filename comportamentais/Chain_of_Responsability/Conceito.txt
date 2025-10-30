@@ -1,0 +1,11 @@
+PROBLEMA
+Imagine um cenário onde você precisa passar uma requisição por uma série de filtros para ver se um deles consegue atendê-la. Uma forma de fazer isso de maneira eficiente é com o padrão Chain of Responsability.
+
+SOLUÇÃO
+Funciona assim: existe a corrente que vai chamando os handlers. Esses handlers respeitam uma interface ou classe abstrata em comum. Caso eles resolvam a requisição, eles retornam o resultado para o handler anterior até o topo da corrente; caso contrário, eles passam pro próximo.
+
+IMPLEMENTAÇÃO
+- Com o problema a ser resolvido, primeiro você cria a interface ou classe abstrata que vai ser herdada/implementada por cada handler.
+- Essa interface/classe abstrata vai ter um método para lidar com a requisição (que vai ser sobrescrito pelas classes concretas) e um outro para dar seguimento para o próximo handler.
+- Em seguida, você cria as classes concretas handlers e implementa de acordo.
+- Você cria a corrente com um método para tentar resolver o problema. Esse método configura a ordem dos handlers e chama o método para tentar resolver a requisição a partir do primeiro handler.
