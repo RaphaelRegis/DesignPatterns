@@ -1,0 +1,19 @@
+PROBLEMA
+Em certos sistemas, é necessário salvar e restaurar o estado anterior de um objeto, por exemplo, para permitir ações como “desfazer” (undo) ou “voltar” (rollback).
+O desafio está em fazer isso sem violar o encapsulamento — ou seja, sem expor os detalhes internos do objeto para o mundo externo.
+Se o estado interno fosse acessado diretamente, o código ficaria frágil e fortemente acoplado à estrutura interna do objeto.
+
+SOLUÇÃO
+O padrão Memento resolve esse problema criando um objeto especial (o Memento) que armazena o estado interno do objeto original (Originator) de forma segura e encapsulada.
+Somente o próprio Originator pode criar e restaurar esses mementos, enquanto um Caretaker (gerenciador) apenas os guarda e recupera quando necessário, sem saber o que há dentro.
+
+Assim, o sistema consegue registrar e restaurar estados anteriores sem violar o encapsulamento nem depender da estrutura interna do objeto.
+
+IMPLEMENTAÇÃO
+A implementação do padrão envolve três papéis principais:
+
+1. Originator — o objeto cujo estado precisa ser salvo. Ele cria mementos que contêm cópias de seu estado atual e sabe restaurar seu estado a partir deles.
+2. Memento — armazena o estado interno do Originator. Seus atributos são privados e acessíveis apenas por ele, garantindo o encapsulamento.
+3. Caretaker — é responsável por armazenar os mementos (como em uma pilha de histórico), mas não pode alterá-los ou inspecionar seu conteúdo.
+
+Na prática, o Memento é amplamente usado em editores de texto, softwares de design, jogos e qualquer aplicação que necessite de funcionalidades de desfazer/refazer ou checkpoint de estado.
