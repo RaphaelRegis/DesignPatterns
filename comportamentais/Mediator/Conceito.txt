@@ -1,0 +1,14 @@
+PROBLEMA
+Em sistemas com muitos objetos interagindo entre si (como botões, campos de texto e listas em uma interface), é comum que cada objeto precise conhecer e se comunicar diretamente com vários outros. Isso cria um forte acoplamento, tornando o código difícil de entender, manter e modificar — uma pequena mudança em um componente pode afetar vários outros.
+
+SOLUÇÃO
+O padrão Mediator propõe a criação de um objeto central (o mediador) que coordena a comunicação entre os outros objetos.
+Assim, os componentes não se comunicam diretamente — em vez disso, enviam mensagens ao mediador, que decide o que deve acontecer.
+Com isso, o acoplamento entre os componentes é reduzido e a lógica de interação fica concentrada em um único ponto.
+
+IMPLEMENTAÇÃO
+1. Defina uma interface Mediator, que declare um método para notificação, como notify(sender, event).
+2. Crie um ConcreteMediator, que implementa essa interface e contém a lógica de coordenação entre os componentes.
+3. Faça os componentes conhecerem apenas o Mediator, e não uns aos outros.
+4. Quando ocorre um evento (ex: clique, mudança de texto), o componente notifica o Mediator.
+5. O Mediator decide quais ações tomar e atualiza os outros componentes conforme necessário.
